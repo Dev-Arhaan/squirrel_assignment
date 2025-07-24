@@ -1,11 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import Navbar from './components/common/Navbar';
 import DoctorPage from './pages/DoctorPage';
 import PatientSearchPage from './pages/PatientSearchPage';
 import Navbar from './components/common/NavBar';
 
-// A simple component for the home page
 function HomePage() {
   return (
     <div className="text-center p-10">

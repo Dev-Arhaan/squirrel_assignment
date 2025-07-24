@@ -7,19 +7,25 @@ const createDoctor = async (doctorData) => {
 };
 
 const findDoctorsNearby = async (lon, lat, radiusKm) => {
-  const radiusInMeters = radiusKm * 1000;
-
-  const doctors = await Doctor.find({
-    location: {
-      $nearSphere: {
-        $geometry: {
-          type: "Point",
-          coordinates: [lon, lat]
+  const doctors = await Doctor.aggregate([
+    {
+      $geoNear: {
+        near: {
+          type: 'Point',
+          coordinates: [lon, lat] // [longitude, latitude]
         },
-        $maxDistance: radiusInMeters
+        distanceField: 'distanceKm', // Field to add with calculated distance
+        distanceMultiplier: 0.001, // Convert distance from meters to kilometers
+        spherical: true // Calculate distance on a sphere
+      }
+    },
+    {
+      // Filter the results to be within the specified radius
+      $match: {
+        distanceKm: { $lte: radiusKm }
       }
     }
-  });
+  ]);
   return doctors;
 };
 
