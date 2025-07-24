@@ -8,8 +8,13 @@ function HomePage() {
   return (
     <div className="text-center p-10">
       <h1 className="text-4xl font-bold">Welcome to Doc-Finder</h1>
-      <p className="mt-4 text-lg text-gray-600">
-        The easiest way to find doctors near you or list your clinic.
+      <p className="mt-4 text-xl text-gray-600">
+        Hi, this is my submission for the doctor-patient platform. <br/> 
+        I've built the frontend using React, Vite, and Tailwind CSS, <br/>
+        integrating with Google Maps and an Express backend. <br />
+        <span className="text-blue-600 cursor-pointer">
+          Let's watch Doctor Registration Flow Demo
+          </span>
       </p>
     </div>
   );

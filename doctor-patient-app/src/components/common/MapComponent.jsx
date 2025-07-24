@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
@@ -46,7 +46,6 @@ function MapComponent({ onLocationSelect }) {
       zoom={11}
       onClick={onMapClick}
     >
-      {/* Display a marker if a location has been selected */}
       {marker && <Marker position={marker} />}
     </GoogleMap>
   ) : (
@@ -56,5 +55,4 @@ function MapComponent({ onLocationSelect }) {
   );
 }
 
-// React.memo prevents re-rendering if props haven't changed
-export default React.memo(MapComponent);
+export default memo(MapComponent);

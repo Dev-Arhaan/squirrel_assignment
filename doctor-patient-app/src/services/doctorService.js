@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// Create an Axios instance with a pre-configured base URL.
-// This means you don't have to type the full URL for every request.
+
 const API = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
   headers: {
@@ -40,8 +39,6 @@ export const registerDoctorClinic = async (clinicData) => {
  */
 export const searchDoctors = async (searchParams) => {
   try {
-    // Axios will automatically append `params` as a query string
-    // e.g., /doctors/search?latitude=28.4&longitude=77.3&radiusKm=10
     const response = await API.get('/doctors/search', { params: searchParams });
     return response.data;
   } catch (error) {
